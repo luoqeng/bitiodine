@@ -34,9 +34,9 @@ pub mod visitors;
 use blockchain::BlockChain;
 use env_logger::Builder;
 use log::LevelFilter;
-use visitors::clusterizer::Clusterizer;
+//use visitors::clusterizer::Clusterizer;
 use visitors::BlockChainVisitor;
-//use visitors::dump_balances::DumpBalances;
+use visitors::dump_balances::DumpBalances;
 //use visitors::dump_tx_hashes::DumpTxHashes;
 
 use std::io::Write;
@@ -66,9 +66,11 @@ fn main() {
         .unwrap();
     */
 
+    /*
     let mut clusterizer_visitor = Clusterizer::new();
     let (_, _, _) = chain.walk(&mut clusterizer_visitor).unwrap();
     let _clusters_count = clusterizer_visitor.done();
+    */
 
     /*
     let (_, _, map) = chain.walk(&mut visitors::dataoutput_finder::DataOutputFinder).unwrap();
@@ -79,9 +81,7 @@ fn main() {
     }
     */
 
-    /*
     let mut balances_visitor = DumpBalances::new();
     let (_, _, _) = chain.walk(&mut balances_visitor).unwrap();
     let _ = balances_visitor.done();
-    */
 }

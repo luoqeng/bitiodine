@@ -17,7 +17,7 @@ impl BlockChain {
     pub unsafe fn read() -> BlockChain {
         let mut maps: Vec<Mmap> = Vec::new();
         let mut n: usize = 0;
-        let blocks_dir = env::home_dir().expect("Unable to get the home directory!").join(".bitcoin").join("blocks");
+        let blocks_dir = env::home_dir().expect("Unable to get the home directory!").join(".bitcoinx").join("blocks");
 
         loop {
             match File::open(blocks_dir.join(format!("blk{:05}.dat", n))) {

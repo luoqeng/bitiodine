@@ -16,7 +16,9 @@ impl<'a> Block<'a> {
                 // Incomplete blk file
                 0x00 => Ok(None),
                 // Bitcoin magic value
-                0xd9b4bef9 => {
+                //0xd9b4bef9 => {
+                // Bitcoinx magic value
+                0xf9bc0511 => {
                     let block_len = read_u32(slice)? as usize;
                     if block_len < 80 {
                         Err(ParseError::Eof)

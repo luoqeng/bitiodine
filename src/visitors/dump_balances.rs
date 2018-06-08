@@ -75,7 +75,7 @@ impl<'a> BlockChainVisitor<'a> for DumpBalances {
             }
             let address = &address_tuple.0;
             let hash160 = address_tuple.1.unwrap_or_default();
-            self.writer.write_all(format!("{:.8},{},{}\n", balance.to_owned() as f64 * 10f64.powf(-8f64), hash160, address).as_bytes())?;
+            self.writer.write_all(format!("{:.4},{},{}\n", balance.to_owned() as f64 * 10f64.powf(-8f64) * 10000f64, hash160, address).as_bytes())?;
         }
 
         Ok(())

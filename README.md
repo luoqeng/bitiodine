@@ -20,12 +20,12 @@ target/release/bitiodine-rust
 
 ### Custom blockchain directory
 
-By default, Bitiodine uses the standard `~/.bitcoin/blocks` directory.
+By default, Bitiodine uses the standard `~/.bitcoinx/blocks` directory.
 If you need to use a different one, you must create a symbolic link:
 
 ```
-mkdir ~/.bitcoin
-ln -sf /path/to/blocks ~/.bitcoin/blocks
+mkdir ~/.bitcoinx
+ln -sf /path/to/blocks ~/.bitcoinx/blocks
 ```
 
 ## Credits

@@ -43,19 +43,22 @@ impl<'a> BlockChainVisitor<'a> for DumpBalances {
         match txout.script.to_highlevel() {
             HighLevel::PayToPubkeyHash(pkh) => {
                 let hash160 = Hash160::from_slice(pkh);
-                let address = Address::from_hash160(hash160, 0x00);
+                //let address = Address::from_hash160(hash160, 0x00);
+                let address = Address::from_hash160(hash160, 0x4b);
                 *self.balances.entry((address.to_owned(), Some(*hash160))).or_insert(0) += value;
                 Some((address, Some(*hash160), value))
             }
             HighLevel::PayToScriptHash(pkh) => {
                 let hash160 = Hash160::from_slice(pkh);
-                let address = Address::from_hash160(hash160, 0x05);
+                //let address = Address::from_hash160(hash160, 0x05);
+                let address = Address::from_hash160(hash160, 0x3f);
                 *self.balances.entry((address.to_owned(), Some(*hash160))).or_insert(0) += value;
                 Some((address, Some(*hash160), value))
             }
             HighLevel::PayToPubkey(pk) => {
                 let hash160 = &Hash160::from_data(pk);
-                let address = Address::from_hash160(hash160, 0x00);
+                //let address = Address::from_hash160(hash160, 0x00);
+                let address = Address::from_hash160(hash160, 0x4b);
                 *self.balances.entry((address.to_owned(), Some(*hash160))).or_insert(0) += value;
                 Some((address, Some(*hash160), value))
             }
@@ -74,8 +77,9 @@ impl<'a> BlockChainVisitor<'a> for DumpBalances {
                 continue;
             }
             let address = &address_tuple.0;
-            let hash160 = address_tuple.1.unwrap_or_default();
-            self.writer.write_all(format!("{:.4},{},{}\n", balance.to_owned() as f64 * 10f64.powf(-8f64) * 10000f64, hash160, address).as_bytes())?;
+            //let hash160 = address_tuple.1.unwrap_or_default();
+            //self.writer.write_all(format!("{:.4},{},{}\n", balance.to_owned() as f64 * 10f64.powf(-8f64) * 10000f64, hash160, address).as_bytes())?;
+            self.writer.write_all(format!("{:.4},{}\n", balance.to_owned() as f64 * 10f64.powf(-8f64) * 10000f64, address).as_bytes())?;
         }
 
         Ok(())
